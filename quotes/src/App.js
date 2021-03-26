@@ -97,6 +97,11 @@ class App extends Component {
 })
   .catch(err => {console.log(err)}
   )
+
+  axios.get('https://quotesdjango.herokuapp.com/quotes/')
+  .then(response => {this.setState({quotes: response.data});
+  })
+  .catch(err => console.log('There is a Quote Error'))
   }
 
 
