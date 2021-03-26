@@ -65,7 +65,7 @@ class App extends Component {
   deleteQuoteList = (id) => {
     let quote = document.getElementById(`${id}`);
     quote.classList.add("deleted")
-    setTimeout(() => this.deleteQuote(id),500)
+    setTimeout(() => this.deleteQuote(id),400)
   }
 
   inputHandler = (event) => {
