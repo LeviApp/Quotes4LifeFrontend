@@ -1,38 +1,389 @@
-.App {
-  text-align: center;
+* {
+  box-sizing:border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@keyframes deleteQuoteC {
+  0% {
+    background-image: linear-gradient(lightgreen 0% 100%, black 100% 100%, lightgreen 100% 100%);
   }
+
+  5% {
+    background-image: linear-gradient(lightgreen 0% 45%, black 45% 55%, lightgreen 55% 100%);
+  }
+
+  10% {
+    background-image: linear-gradient(lightgreen 0% 35%, black 35% 65%, lightgreen 65% 100%);
+  }
+
+  15% {
+    background-image: linear-gradient(lightgreen 0% 25%, black 25% 75%, lightgreen 75% 100%);
+  }
+
+  20% {
+    background-image: linear-gradient(lightgreen 0% 15%, black 15% 85%, lightgreen 85% 100%);
+  }
+
+  25% {
+    background-image: linear-gradient(lightgreen 0% 5%, black 5% 95%, lightgreen 95% 100%);
+  }
+
+  30%, 100% {
+    background-image: linear-gradient(lightgreen 0% 0%, black 0% 100%, lightgreen 100% 100%);
+  }
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+
+
+
+
+
+
+.line {
+  height: 2px;
+  background-color: #C4C4C4;
+  width: 100%;
+}
+
+.fullText {
+  position: relative;
+  z-index: 0;
+  text-align: left;
+  text-overflow: scroll;
+  font-size: 2.5rem
+}
+
+
+.quotesSingle {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: space-around;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 20px;
+  background-color: lightgreen;
+  z-index: 0;
+  
+}
+
+
+
+.Main {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 120px;
+}
+
+
+
+
+  h5 {
+    margin: 0
+  }
+
+  .singleH {
+    text-decoration: none;
+    word-break: break-word;
+    font-size: 2.5rem
+    }
+
+  h1::before {
+    content: '"';
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 5rem;
+    color: green
+    
+  }
+
+h1 {
+  margin:0px;
+  font-size: 3rem;
+  text-align: left;
+  
+}
+
+h1::after {
+  content: '"';
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 5rem;
+    color: green
+}
+
+button {
+  background-color: green;
+  width: 250px;
   color: white;
+  padding:20px;
+  font-size: 1.25rem;
+  border-radius: 0%;
+  margin: 10px 10px 10px 10px;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  cursor: pointer
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.deleteB {
+  background-color: green;
+  width: 250px;
+  color:white;
+  padding:20px;
+  font-size: 2rem;
+  border-radius: 0%;
+  margin: 10px;
+}
+
+.red {
+  background-color: #CA001A;
+}
+
+
+
+
+.test {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: row;
+  width: 25%;
+  justify-content: space-around;
+  color: black;
+  font-size: 2rem;
+  margin: 0
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+
+h5:hover {
+  text-decoration: underline;
+  color: green;
+  cursor: pointer;
+}
+
+
+.deleteContainer {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 300px;
+  width: 600px;
+  height: 200px;
+  background-color: white;
+  z-index: 15;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  box-shadow: 0 0 15px 5px black, 0 0 1000px 1000px rgba(0, 0, 0, 0.5); 
+}
+
+.deleteContainer p {
+  font-size: 2rem;
+  width: 90%;
+  text-align: center;
+  margin: 10px 0px
+}
+
+.singleContainer {
+  display: flex;
+  margin-top: 40px;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+
+}
+
+.mainCardInfo {
+  display: flex;
+  flex-direction: column;
+  width: 50%
+}
+
+.quotesList {
+
+  display: flex;
+  flex-direction: column;
+  width: 100%
+
+}
+
+img {
+  height: 72vh;
+  position: sticky;
+  top: 160px;
+  max-width: 500px;
+  object-fit: contain;
+}
+
+.deleted {
+  animation: deleteQuote 0.5s ease-in-out 0s 1 normal forwards
+}
+
+.empty {
+  background-color: salmon;
+}
+
+.empty::placeholder {
+  color: white
+}
+
+.deleteButtons button {
+  font-size: 2rem
+}
+
+@media only screen and (max-width: 1279px) {
+  .singleContainer {
+    display: flex;
+    margin-top: 40px;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
   }
-  to {
-    transform: rotate(360deg);
+
+  img {
+    height: 90vh;
+    position: absolute;
+    top: 70px;
+    object-fit: contain;
+    z-index: 0;
+    opacity: 0.15;
+    max-width: 80%;
   }
+
+  .mainCardInfo {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    z-index: 10
+  }
+}
+
+
+@media only screen and (max-width: 1000px) {
+
+
+  button {
+    background-color: green;
+    color: white;
+    width: 100%;
+    padding:20px;
+    font-size: 1.5rem;
+    border-radius: 0%;
+    margin: 10px 10px 10px 10px;
+  }
+
+  .deleteButtons {
+    display: flex;
+    width: 100%;
+    justify-content: space-around
+  }
+
+  #red-button {
+    width: 250px
+  }
+  
+  #green-button {
+    width: 250px
+  }
+  
+
+}
+
+@media only screen and (max-width: 680px) {
+
+
+  
+
+  button {
+    width: 20vw;
+    font-size: 1.25rem;
+    margin: 0;
+    padding: 10px;
+
+  }
+
+
+
+
+  .Main {
+    margin-top: 50px;
+  }
+
+
+
+
+
+
+
+  .quotesList {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+
+  .button {
+    align-self: center;
+    width: 60%;
+    font-size: 2rem;
+    font-weight: normal
+  }
+
+  .singleH {
+    text-decoration: none;
+    word-break: break-word;
+    font-size: 2.25rem
+    }
+
+    .fullText {
+      position: relative;
+      z-index: 0;
+      text-align: center;
+      font-size: 1.75rem
+    }
+
+    .deleteContainer {
+      width: 90%;
+    }
+    .deleteContainer button {
+      padding: 10px;
+      margin: 10px;
+    }
+
+    .deleteButtons {
+      display: flex;
+      width: 100%;
+      justify-content: center
+    }
+
+    #red-button {
+      width: 50vw
+    }
+    
+    .red {
+      width: 100%
+    }
+    #green-button {
+      width: 50vw
+    }
 }
