@@ -1,0 +1,173 @@
+@keyframes deleteQuote {
+    0% {
+      transform: scale(1);
+    }
+  
+    100% {
+      transform: scale(0);
+    }
+  }
+
+.gridList {
+    display: grid;
+    width: 100%;
+    flex-direction: column;
+    grid-template-columns: repeat(auto-fit, 300px);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 0;
+    margin: auto;
+  }
+
+  .cont {
+    display: flex;
+    flex-direction: column;
+    margin: 0
+  }
+  
+  .cont:hover > h2  {
+    display: flex;
+    margin: 0;
+    position: relative;
+    right: 30px;
+    top: 20px;
+  
+  }
+
+
+  .quoteStyleC {
+    filter: drop-shadow(0px 0px 10px black);
+    position: relative;
+    z-index: 0
+  }
+  
+  .quoteStyleC:hover {
+    filter: drop-shadow(0px 10px 20px black);
+    z-index: 1;
+  }
+
+  .quoteStyleC:hover > .quoteStyle > h3  {
+    display: none
+  }
+  
+  .quoteStyleC:hover > .quoteStyle > p  {
+    display: none
+  }
+
+  .quoteStyle:hover > .quoteStyle  {
+    transform: scale(1.25);
+  }
+  
+  .quoteStyle {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 250px;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align:left;
+    text-decoration: none;
+    height:250px;
+    margin: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    z-index: 0;
+    box-shadow: 0px 0px 10px 2px black;
+    clip-path: polygon(0 58%, 5% 21%, 1% 9%, 0 0, 0 100%, 0% 1%, 10% 0%, 23% 2%, 34% 0%, 51% 3%, 61% 0%, 75% 5%, 93% 4%, 100% 9%, 96% 19%, 100% 30%, 94% 43%, 100% 52%, 95% 86%, 100% 100%, 89% 98%, 77% 100%, 49% 93%, 34% 100%, 26% 91%, 0 100%);
+  }
+
+  .deleted {
+    animation: deleteQuote 0.5s ease-in-out 0s 1 normal forwards
+  }
+
+  .textList {
+    height: 200px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    padding: 0px 10px;
+    word-break: break-word;
+  }
+
+  h3 {
+    text-decoration: none;
+    padding-left:10px;
+    word-break: break-word;
+    }
+
+    h2 {
+        display: none;
+        font-size: 1.5rem;
+        z-index: 4;
+        align-self: flex-end;
+        color: white;
+        text-shadow: -2px 0 red, 0 2px red, 2px 0 red, 0 -2px red;
+      }
+      
+      h2:hover {
+        color: red;
+        cursor: pointer
+      }
+
+@media only screen and (max-width: 1000px) {
+.gridList {
+    margin-top: 20px;
+}
+}
+
+@media only screen and (max-width: 680px) {
+    .gridList {
+      grid-template-columns: repeat(1, 0.75fr);
+      width: 90%;
+      padding: 20px;
+      z-index: 0;
+      margin-top: 0px;
+    }
+
+    .cont {
+        margin: 20px;
+    }
+    .cont h2 {
+        display: flex;
+        font-size: 2rem;
+        z-index: 4;
+        align-self: flex-end;
+        color: white;
+        text-shadow: -2px 0 red, 0 2px red, 2px 0 red, 0 -2px red;
+        margin: 0px;
+    }
+
+    .cont:hover > h2  {
+        display: flex;
+        margin: 0;
+        position: relative;
+        right: 0px;
+        top: 0px;
+    
+    }
+    
+
+    .quoteStyleC {
+        width: 70vw;
+        height: 70vw;
+        margin: 0px;
+      }
+
+      .quoteStyle {
+        width: 70vw;
+        height: 70vw;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .textList {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+
+      h3 {
+        font-size: 1.75rem;
+        text-align: center
+      }
+}

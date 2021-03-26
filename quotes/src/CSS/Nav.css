@@ -1,0 +1,104 @@
+nav {
+    display: flex;
+    width:100%;
+    flex-direction: row;
+    position: fixed;
+    justify-content: space-between;
+    background-color: white;
+    padding: 15px;
+    top: 0;
+    z-index: 20;
+  }
+
+  .add-quote::after {
+    content: "+ Add New Quote";
+    visibility: visible;
+    font-size: 1.5rem
+  }
+  
+  .view-quote::after {
+    content: "View Your Quotes";
+    visibility: visible;
+    font-size: 1.5rem
+  }
+
+  @media only screen and (max-width: 1000px) {
+    nav {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+
+    nav h1 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+    
+    nav h1::before {
+      font-size: 2.75rem;
+    }
+    
+    nav h1::after {
+      font-size: 2.75rem
+    }
+    
+      nav div {
+        display: flex;
+        width: 50%;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0px;
+        top: 0;
+        z-index: 1;
+        margin-right: 10px
+      }
+}
+
+@media only screen and (max-width: 680px) {
+    
+    nav {
+      flex-direction: row;
+      padding: 5px
+    }
+    nav h1 {
+        font-size: 1.25rem;
+        text-align: center;
+        width: 90%
+    }
+  
+    nav h1::before {
+      font-size: 1.25rem;
+  }
+  
+    nav h1::after {
+      font-size: 1.25rem
+  }
+  
+    nav div {
+      display: flex;
+      width: 70%;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0px;
+      top: 0;
+      z-index: 1;
+    }
+
+    .add-quote {
+        padding: 12px 0
+      }
+      .add-quote::after {
+        content: "+";
+        color: white;
+        font-size: 1.5rem
+      }
+    
+      .view-quote::after {
+        content: "☰";
+        color: white;
+        font-size: 1.5rem
+      }
+}
