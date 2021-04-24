@@ -34,7 +34,7 @@ class App extends Component {
   
   componentDidMount() {
     this._isM = true;
-      axios.get('https://quotesdjango.herokuapp.com/quotes/')
+      axios.get('https://quotesnodejs.herokuapp.com/quotes/')
       .then(response => {this.setState({quotes: response.data});
       })
       .catch(err => console.log('There is a Quote Error'))
@@ -46,7 +46,7 @@ class App extends Component {
   }
 
   deleteQuote = (id) => {
-    axios.delete(`https://quotesdjango.herokuapp.com/quotes/${id}/`)
+    axios.delete(`https://quotesnodejs.herokuapp.com/quotes/${id}/`)
     .then(response => {
       if (this._isM = true){
         let quotes = this.state.quotes.filter( quote => quote.id !== Number(id))
@@ -56,7 +56,7 @@ class App extends Component {
     .then ( response => this.setState({deleteQuote:false}))
     .catch(err => console.log(err))
 
-    axios.get('https://quotesdjango.herokuapp.com/quotes/')
+    axios.get('https://quotesnodejs.herokuapp.com/quotes/')
     .then(response => {this.setState({quotes: response.data});
     })
     .catch(err => console.log('There is a Quote Error'))
@@ -92,16 +92,13 @@ class App extends Component {
     img_url = 'https://2.bp.blogspot.com/-eglvS715ISM/T2F2CH2DQ3I/AAAAAAAABFI/4X8pluMcxFg/s1600/Seamless+stone+texture+%25282%2529.jpg';
   }
  
-  axios.post('https://quotesdjango.herokuapp.com/quotes/', {title,text_body, img_url})
-  .then( response => {this.setState({quotes: [...this.state.quotes, {id:response.data , title:title, text_body:text_body, img_url:img_url}]})
-})
-  .catch(err => {console.log(err)}
-  )
-
-  axios.get('https://quotesdjango.herokuapp.com/quotes/')
+  axios.post('https://quotesnodejs.herokuapp.com/quotes/new', {title,text_body, img_url})
+  .then( response => {
+  axios.get('https://quotesnodejs.herokuapp.com/quotes/')
   .then(response => {this.setState({quotes: response.data});
   })
-  .catch(err => console.log('There is a Quote Error'))
+  .catch(err => console.log('There is a Quote Error', err))
+})
   }
 
 
@@ -114,7 +111,7 @@ class App extends Component {
       img_url = 'https://2.bp.blogspot.com/-eglvS715ISM/T2F2CH2DQ3I/AAAAAAAABFI/4X8pluMcxFg/s1600/Seamless+stone+texture+%25282%2529.jpg';
     }
 
-    axios.patch(`https://quotesdjango.herokuapp.com/quotes/${id}/`, {title,text_body, img_url})
+    axios.put(`https://quotesnodejs.herokuapp.com/quotes/${id}/`, {title,text_body, img_url})
     .then( response => 
       {this.setState({quotes: [...quotesE, {id:id , title:title, text_body:text_body, img_url:img_url}]})
     })
