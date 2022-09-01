@@ -1,12 +1,10 @@
 import React, {Component} from 'react'
-import {BrowserRouter as Router,Route, NavLink} from 'react-router-dom';
+import {BrowserRouter as NavLink} from 'react-router-dom';
 
 import '../CSS/Nav.css'
 class QuotesNav extends Component {
 
-    constructor(props) {
-        super(props);
-    }
+
     render(){
     return (
         <nav>

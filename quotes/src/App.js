@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router,Route, NavLink, Redirect} from 'react-router-dom';
-import logo from './logo.svg';
+import {BrowserRouter as Route,Redirect} from 'react-router-dom';
 import './App.css';
 import QuotesList from './Components/QuotesList'
 import NewQuote from './Components/NewQuote'
 import QuotesNav from './Components/QuotesNav'
-import Quote from './Components/Quote'
 import SingleQuote from './Components/SingleQuote'
-import DeleteModal from './Components/DeleteModal'
 import EditQuote from './Components/EditQuote'
 import isImageUrl from 'is-image-url'
 import axios from 'axios'
@@ -34,7 +31,7 @@ class App extends Component {
   
   componentDidMount() {
     this._isM = true;
-      axios.get('https://quotesnodejs.herokuapp.com/quotes/')
+      axios.get('https://quotes4life.up.railway.app/quotes/')
       .then(response => {this.setState({quotes: response.data});
       })
       .catch(err => console.log('There is a Quote Error'))
@@ -46,9 +43,9 @@ class App extends Component {
   }
 
   deleteQuote = (id) => {
-    axios.delete(`https://quotesnodejs.herokuapp.com/quotes/${id}/`)
+    axios.delete(`https://quotes4life.up.railway.app/quotes/${id}/`)
     .then(response => {
-      if (this._isM = true){
+      if (this._isM === true){
         let quotes = this.state.quotes.filter( quote => quote.id !== Number(id))
         this.setState({quotes: quotes});
       };
@@ -56,7 +53,7 @@ class App extends Component {
     .then ( response => this.setState({deleteQuote:false}))
     .catch(err => console.log(err))
 
-    axios.get('https://quotesnodejs.herokuapp.com/quotes/')
+    axios.get('https://quotes4life.up.railway.app/quotes/')
     .then(response => {this.setState({quotes: response.data});
     })
     .catch(err => console.log('There is a Quote Error'))
@@ -83,8 +80,6 @@ class App extends Component {
 }
 
   addQuote = (event) => {
-
-  const tags = this.state.tags;
   const title = this.state.title;
   const text_body = this.state.text_body;
   let img_url = this.state.img_url;
@@ -92,9 +87,9 @@ class App extends Component {
     img_url = 'https://2.bp.blogspot.com/-eglvS715ISM/T2F2CH2DQ3I/AAAAAAAABFI/4X8pluMcxFg/s1600/Seamless+stone+texture+%25282%2529.jpg';
   }
  
-  axios.post('https://quotesnodejs.herokuapp.com/quotes/new', {title,text_body, img_url})
+  axios.post('https://quotes4life.up.railway.app/quotes/new', {title,text_body, img_url})
   .then( response => {
-  axios.get('https://quotesnodejs.herokuapp.com/quotes/')
+  axios.get('https://quotes4life.up.railway.app/quotes/')
   .then(response => {this.setState({quotes: response.data});
   })
   .catch(err => console.log('There is a Quote Error', err))
@@ -111,7 +106,7 @@ class App extends Component {
       img_url = 'https://2.bp.blogspot.com/-eglvS715ISM/T2F2CH2DQ3I/AAAAAAAABFI/4X8pluMcxFg/s1600/Seamless+stone+texture+%25282%2529.jpg';
     }
 
-    axios.put(`https://quotesnodejs.herokuapp.com/quotes/${id}/`, {title,text_body, img_url})
+    axios.put(`https://quotes4life.up.railway.app/quotes/${id}/`, {title,text_body, img_url})
     .then( response => 
       {this.setState({quotes: [...quotesE, {id:id , title:title, text_body:text_body, img_url:img_url}]})
     })
@@ -142,12 +137,10 @@ class App extends Component {
       <div className='Main'>
         <QuotesNav clickForAllHandler={this.clickForAllHandler} clickForNewHandler={this.clickForNewHandler} />
         <Route exact path="/" render={(props) =>  <Redirect to='/home' /> } />
-
         <Route exact path="/home" render={(props) =>  <QuotesList {...props} selectedHandler={this.selectedHandler} deleteQuoteList={this.deleteQuoteList} hoveredID={this.state.hoveredID} quotes={this.state.quotes} />} />
         <Route exact path="/new" render={(props) =>  <NewQuote {...props} resetHandler = {this.resetHandler}title={this.state.title} text_body={this.state.text_body} img_url={this.state.img_url} inputHandler={this.inputHandler} addQuote={this.addQuote} quotes={this.state.quotes} />} />
         <Route exact path="/quote/edit/:id" render={(props) =>  <EditQuote {...props} title={this.state.title} text_body={this.state.text_body} img_url={this.state.img_url} editQuote={this.editQuote} inputHandler={this.inputHandler} quotes={this.state.quotes} />} />
         <Route exact path="/quote/:id" render={(props) =>  <SingleQuote {...props} deleteQuote={this.deleteQuote} DEL={this.state.deleteQuote} noHandler={this.noHandler} this={this} deleteHandler={this.deleteHandler} />} />
-
       </div>
     );
   }

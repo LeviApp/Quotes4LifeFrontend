@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import '../App.css'
 import axios from 'axios';
 import DeleteModal from './DeleteModal'
-import {BrowserRouter as Router,Route, NavLink} from 'react-router-dom';
+import {BrowserRouter as NavLink} from 'react-router-dom';
 
 class SingleQuote extends Component {
     constructor(props) {
@@ -17,7 +17,7 @@ class SingleQuote extends Component {
     componentDidMount() {
         setTimeout(()=> {
             const ID = Number(this.props.match.params.id);
-            axios.get(`https://quotesnodejs.herokuapp.com/quotes/${ID}/`)
+            axios.get(`https://quotes4life.up.railway.app/quotes/${ID}/`)
             .then(response => {this.setState({quote: response.data});
             this.props.this.setState({title:this.state.quote.title, text_body: this.state.quote.text_body, img_url: this.state.quote.img_url})})
             .catch (err => console.log(err))
@@ -27,7 +27,7 @@ class SingleQuote extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (prevState.data !== this.props.data) {
         const ID = Number(this.props.match.params.id);
-        axios.get(`https://quotesnodejs.herokuapp.com/quotes/${ID}/`)
+        axios.get(`https://quotes4life.up.railway.app/quotes/${ID}/`)
         .then(response => {this.setState({quote: response.data});
         this.props.this.setState({title:this.state.quote.title, text_body: this.state.quote.text_body, img_url: this.state.quote.img_url})})
         .catch (err => console.log(err))
@@ -41,7 +41,7 @@ class SingleQuote extends Component {
     return (
         <div className='singleContainer'>
         {Modal}
-            <img src={this.state.quote.img_url} />
+            <img src={this.state.quote.img_url} alt={this.state.quote.title} />
             <div className='mainCardInfo' >
             <div className='button'>
             <NavLink activeClassName='selected' to={{pathname: `/quote/edit/${this.props.match.params.id}`, state:{ID: Number(this.props.match.params.id), title: this.state.quote.title, text_body: this.state.quote.text_body, img_url: this.state.quote.img_url}}}>

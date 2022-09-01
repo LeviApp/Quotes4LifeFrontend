@@ -1,8 +1,7 @@
-import React, {Component} from 'react'
+import React from 'react'
 import '../App.css'
 
 import styled from 'styled-components'
-import {BrowserRouter as Router,Route, Link} from 'react-router-dom';
 
 const Quoted = styled.div`
 background: ${(props) => (props.url ? `linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url(${props.url})` : 'white' )}; 

@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
-import Quote from './Quote'
 import '../CSS/New.css'
-import axios from 'axios'
-import {BrowserRouter as Router,Route, NavLink, Link} from 'react-router-dom';
+import {BrowserRouter as NavLink} from 'react-router-dom';
 
 class NewQuote extends Component {
 

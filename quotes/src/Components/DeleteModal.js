@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import '../App.css'
-import axios from 'axios'
-import {BrowserRouter as Router,Route, NavLink} from 'react-router-dom';
+import {BrowserRouter as NavLink} from 'react-router-dom';
 class DeleteModal extends Component {
     constructor() {
         super();

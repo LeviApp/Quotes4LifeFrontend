@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
-import Quote from './Quote'
 import '../CSS/Edit.css'
-import axios from 'axios'
-import {BrowserRouter as Router,Route, NavLink} from 'react-router-dom';
+import {BrowserRouter as NavLink} from 'react-router-dom';
 
 class EditQuote extends Component {
 
