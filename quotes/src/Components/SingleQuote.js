@@ -17,7 +17,7 @@ class SingleQuote extends Component {
     componentDidMount() {
         setTimeout(()=> {
             const ID = Number(this.props.match.params.id);
-            axios.get(`https://quotes4life.up.railway.app/quotes/${ID}/`)
+            axios.get(`https://quotes-4-life.onrender.com/quotes/${ID}/`)
             .then(response => {this.setState({quote: response.data});
             this.props.this.setState({title:this.state.quote.title, text_body: this.state.quote.text_body, img_url: this.state.quote.img_url})})
             .catch (err => console.log(err))
@@ -27,7 +27,7 @@ class SingleQuote extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (prevState.data !== this.props.data) {
         const ID = Number(this.props.match.params.id);
-        axios.get(`https://quotes4life.up.railway.app/quotes/${ID}/`)
+        axios.get(`https://quotes-4-life.onrender.com/quotes/${ID}/`)
         .then(response => {this.setState({quote: response.data});
         this.props.this.setState({title:this.state.quote.title, text_body: this.state.quote.text_body, img_url: this.state.quote.img_url})})
         .catch (err => console.log(err))

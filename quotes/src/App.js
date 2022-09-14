@@ -34,7 +34,7 @@ class App extends Component {
   
   componentDidMount() {
     this._isM = true;
-      axios.get('https://quotes4life.up.railway.app/quotes/')
+      axios.get('https://quotes-4-life.onrender.com/quotes/')
       .then(response => {this.setState({quotes: response.data});
       })
       .catch(err => console.log('There is a Quote Error'))
@@ -46,7 +46,7 @@ class App extends Component {
   }
 
   deleteQuote = (id) => {
-    axios.delete(`https://quotes4life.up.railway.app/quotes/${id}/`)
+    axios.delete(`https://quotes-4-life.onrender.com/quotes/${id}/`)
     .then(response => {
       if (this._isM = true){
         let quotes = this.state.quotes.filter( quote => quote.id !== Number(id))
@@ -56,7 +56,7 @@ class App extends Component {
     .then ( response => this.setState({deleteQuote:false}))
     .catch(err => console.log(err))
 
-    axios.get('https://quotes4life.up.railway.app/quotes/')
+    axios.get('https://quotes-4-life.onrender.com/quotes/')
     .then(response => {this.setState({quotes: response.data});
     })
     .catch(err => console.log('There is a Quote Error'))
@@ -92,9 +92,9 @@ class App extends Component {
     img_url = 'https://2.bp.blogspot.com/-eglvS715ISM/T2F2CH2DQ3I/AAAAAAAABFI/4X8pluMcxFg/s1600/Seamless+stone+texture+%25282%2529.jpg';
   }
  
-  axios.post('https://quotes4life.up.railway.app/quotes/new', {title,text_body, img_url})
+  axios.post('https://quotes-4-life.onrender.com/quotes/new', {title,text_body, img_url})
   .then( response => {
-  axios.get('https://quotes4life.up.railway.app/quotes/')
+  axios.get('https://quotes-4-life.onrender.com/quotes/')
   .then(response => {this.setState({quotes: response.data});
   })
   .catch(err => console.log('There is a Quote Error', err))
@@ -111,7 +111,7 @@ class App extends Component {
       img_url = 'https://2.bp.blogspot.com/-eglvS715ISM/T2F2CH2DQ3I/AAAAAAAABFI/4X8pluMcxFg/s1600/Seamless+stone+texture+%25282%2529.jpg';
     }
 
-    axios.put(`https://quotes4life.up.railway.app/quotes/${id}/`, {title,text_body, img_url})
+    axios.put(`https://quotes-4-life.onrender.com/quotes/${id}/`, {title,text_body, img_url})
     .then( response => 
       {this.setState({quotes: [...quotesE, {id:id , title:title, text_body:text_body, img_url:img_url}]})
     })
